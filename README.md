@@ -51,49 +51,44 @@ $ sudo ldconfig
 
 Or, you can [build from the source](https://github.com/second-state/WasmEdge-go#option-1-build-from-the-source).
 
-#### Install WasmEdge-tensorflow
+#### Install WasmEdge-tensorflow dependencies
 
-Install tensorflow dependencies for `manylinux2014` platform
-
-```bash
-$ wget https://github.com/second-state/WasmEdge-tensorflow-deps/releases/download/0.8.0/WasmEdge-tensorflow-deps-TF-0.8.0-manylinux2014_x86_64.tar.gz
-$ wget https://github.com/second-state/WasmEdge-tensorflow-deps/releases/download/0.8.0/WasmEdge-tensorflow-deps-TFLite-0.8.0-manylinux2014_x86_64.tar.gz
-$ sudo tar -C /usr/local/lib -xzf WasmEdge-tensorflow-deps-TF-0.8.0-manylinux2014_x86_64.tar.gz
-$ sudo tar -C /usr/local/lib -xzf WasmEdge-tensorflow-deps-TFLite-0.8.0-manylinux2014_x86_64.tar.gz
-$ sudo ln -sf libtensorflow.so.2.4.0 /usr/local/lib/libtensorflow.so.2
-$ sudo ln -sf libtensorflow.so.2 /usr/local/lib/libtensorflow.so
-$ sudo ln -sf libtensorflow_framework.so.2.4.0 /usr/local/lib/libtensorflow_framework.so.2
-$ sudo ln -sf libtensorflow_framework.so.2 /usr/local/lib/libtensorflow_framework.so
-$ sudo ldconfig
-```
-
-Install WasmEdge-tensorflow:
 
 ```bash
-$ wget https://github.com/second-state/WasmEdge-tensorflow/releases/download/0.8.0/WasmEdge-tensorflow-0.8.0-manylinux2014_x86_64.tar.gz
-$ wget https://github.com/second-state/WasmEdge-tensorflow/releases/download/0.8.0/WasmEdge-tensorflowlite-0.8.0-manylinux2014_x86_64.tar.gz
-$ sudo tar -C /usr/local/ -xzf WasmEdge-tensorflow-0.8.0-manylinux2014_x86_64.tar.gz
-$ sudo tar -C /usr/local/ -xzf WasmEdge-tensorflowlite-0.8.0-manylinux2014_x86_64.tar.gz
-$ sudo ldconfig
+$ wget https://github.com/second-state/WasmEdge-go/releases/download/v0.8.1/install_wasmedge_tensorflow_deps.sh
+$ wget https://github.com/second-state/WasmEdge-go/releases/download/v0.8.1/install_wasmedge_tensorflow.sh
+$ sudo ./install_wasmedge_tensorflow_deps.sh /usr/local
+$ sudo ./install_wasmedge_tensorflow.sh /usr/local
 ```
 
-Install WasmEdge-image:
 
-```
-$ wget https://github.com/second-state/WasmEdge-image/releases/download/0.8.0/WasmEdge-image-0.8.0-manylinux2014_x86_64.tar.gz
-$ sudo tar -C /usr/local/ -xzf WasmEdge-image-0.8.0-manylinux2014_x86_64.tar.gz
-$ sudo ldconfig
+#### Install WasmEdge-image Dependencies:
 
-```
+When linking with `Wasmedge-image`, `libjpeg.so.8` and `libpng16.so.16` are required.
 
-If you have any questions about installation, please refer to [the official documentation](https://github.com/second-state/WasmEdge-go#wasmedge-tensorflow-extension). Currently, this project works on Linux machines only.
-
-#### Install video and image processing dependencies
-
+For `ubuntu 18.04` or later, the following commands can install these dependencies:
 ```bash
 $ sudo apt-get update
-$ sudo apt-get install -y ffmpeg libjpeg-dev libpng-dev
+$ sudo apt-get install -y libjpeg-dev libpng-dev
 ```
+
+Or you can download and install the pre-built shared libraries for the `manylinux1` platforms:
+
+```bash
+$ wget https://github.com/second-state/WasmEdge-go/releases/download/v0.8.1/install_wasmedge_image_deps.sh
+$ sudo ./install_wasmedge_image_deps.sh /usr/local
+```
+
+Finally, install the `WasmEdge-image`:
+
+```bash
+$ wget https://github.com/second-state/WasmEdge-go/releases/download/v0.8.1/install_wasmedge_image.sh
+$ sudo ./install_wasmedge_image.sh /usr/local
+```
+
+If you have any questions about installation, please refer to [the official documentation](https://github.com/second-state/WasmEdge-go#wasmedge-tensorflow-shared-library-installation). Currently, this project works on Linux machines only.
+
+
 
 ### 4. Write your Streaming Serverless function
 
